@@ -16,6 +16,14 @@ import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
 
 export default class locketz extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loggedIn: false,
+            token: false
+        };
+    }
+
     render() {
         return (
             <CreatorHome></CreatorHome>
