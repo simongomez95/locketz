@@ -15,7 +15,7 @@ import {
 import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
 
-export default class Locketz extends Component {
+export default class locketz extends Component {
     render() {
         return (
             <CreatorHome></CreatorHome>
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('Locketz', () => Locketz);
+AppRegistry.registerComponent('locketz', () => locketz);
