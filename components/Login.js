@@ -4,12 +4,12 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 
 class Login extends Component {
 
-  static propTypes = {}
+  static propTypes = {};
 
-  static defaultProps = {}
+  static defaultProps = {};
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {}
   }
 
