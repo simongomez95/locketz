@@ -21,10 +21,13 @@ class Subscription {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + this.token
         },
-        body: {
+        body: JSON.stringify({
           followUser: followUser
-        }
-      });
+        })
+      }).then((response) => response.json())
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }
 
@@ -37,7 +40,10 @@ class Subscription {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.token
       }
-    });
+    }).then((response) => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   getFollowing () {
@@ -49,7 +55,11 @@ class Subscription {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.token
       }
-    });
+    }).then((response) => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
   }
-
 }
+
+export default Subscription;

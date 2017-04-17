@@ -25,8 +25,12 @@ class Content {
         file: {
           photo: photo
         }
-      });
+      }).then((response) => response.json())
+        .catch((error) => {
+          console.error(error);
+        });
     }
   }
-
 }
+
+export default Content;
