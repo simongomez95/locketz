@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input, Item, Button, Text } from 'native-base';
-import { Image } from 'react-native'
+import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input, Item, Button, Text
+        ,} from 'native-base';
+import { Image } from 'react-native';
+import Drawer from 'react-native-drawer';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import SideBar from './CreatorSideBar';
 
 class CreatorHome extends Component {
 
@@ -13,52 +16,67 @@ class CreatorHome extends Component {
         this.state = {}
     }
 
+    closeControlPanel = () => {
+        this._drawer.close()
+    };
+    openControlPanel = () => {
+        this._drawer.open()
+    };
+
     render() {
         return(
-            <Container>
-                <Header style={{backgroundColor:"#b9f6ca"}}>
-                    <Left>
-                        <Button transparent>
-                            <Icon name="menu" size={20} color='white' />
-                        </Button>
-                    </Left>
-                    <Body alignItems = "center"><Title>Home</Title></Body>
-                    <Right/>
-                </Header>
+            <Drawer
+                ref={(ref) => this._drawer = ref}
+                content={<SideBar navigator={this.navigator}/>}
+            >
 
-                <Content style={{padding: 10}}>
-                    <Grid>
-                        <Row style={{height:300}}>
-                            <Col alignItems ="center">
-                                <Image
-                                    style={{width: 256, height: 256}}
-                                    source={require('../img/pool1.png')}
-                                />
-                            </Col>
-                        </Row>
+                <Container>
+                    <Header style={{backgroundColor:"#b9f6ca"}}>
+                        <Left>
+                            <Button transparent>
+                                <Icon name="menu" size={20} color='white' />
+                            </Button>
+                        </Left>
+                        <Body alignItems = "center"><Title>Home</Title></Body>
+                        <Right/>
+                    </Header>
 
-                        <Row style={{height:50}}>
-                            <Col style={{paddingLeft: 30}}>
-                                <Text style={{fontSize:20,fontWeight:'bold'}}>420 Followers</Text>
-                            </Col>
-                        </Row>
-                        <Row style={{height:50}}>
+                        <Content style={{padding: 10}}>
                             <Grid>
-                                <Row style={{height:50, alignItems:"center"}}>
-                                    <Col style={{alignItems:"center"}}>
-                                        <Icon name="flask" size={100} color='green'/>
-                                    </Col>
-                                    <Col style={{alignItems:"center"}}>
-                                        <Icon name="flame" size={100} color='green'/>
+                                <Row style={{height:300}}>
+                                    <Col alignItems ="center">
+                                        <Image
+                                            style={{width: 256, height: 256}}
+                                            source={require('../img/pool1.png')}
+                                        />
                                     </Col>
                                 </Row>
+
+                                <Row style={{height:50}}>
+                                    <Col style={{paddingLeft: 30}}>
+                                        <Text style={{fontSize:20,fontWeight:'bold'}}>420 Followers</Text>
+                                    </Col>
+                                </Row>
+                                <Row style={{height:50}}>
+                                    <Grid>
+                                        <Row style={{height:50, alignItems:"center"}}>
+                                            <Col style={{alignItems:"center"}}>
+                                                <Icon name="flask" size={100} color='green'/>
+                                            </Col>
+                                            <Col style={{alignItems:"center"}}>
+                                                <Icon name="flame" size={100} color='green'/>
+                                            </Col>
+                                        </Row>
+                                    </Grid>
+                                </Row>
+
+
                             </Grid>
-                        </Row>
+                        </Content>
+                </Container>
+            </Drawer>
 
 
-                    </Grid>
-                </Content>
-            </Container>
         )
     }
 }
