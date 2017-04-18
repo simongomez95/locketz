@@ -27,13 +27,11 @@ class Login extends Component {
         <Header style={{backgroundColor:"#b9f6ca"}}></Header>
         <Content contentContainerStyle={{flex: 1}} style={{padding: 10}}>
           <Grid>
-
             <Row size={10}>
               <Col alignItems="center">
                 <Icon name='cash' style={{fontSize: 56}}></Icon>
               </Col>
             </Row>
-
             <Row size={70} style={{paddingTop: 50}}>
               <Col>
                 <Form>
@@ -65,8 +63,9 @@ class Login extends Component {
                 <Button
                   style={{backgroundColor:"#b9f6ca"}} block
                   onPress={
-                    () => {this.auth.signIn(this.state.email, this.state.password).then((result) => {
-
+                    () => {this.auth.signIn(this.state.email, this.state.password).
+                    then((res) => {
+                      this.props.userType = res.userType;
                     })
                     }
                   }

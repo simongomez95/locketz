@@ -12,8 +12,6 @@ import {
   View
 } from 'react-native';
 
-import Auth from './utils/Auth';
-
 import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
 
@@ -41,7 +39,7 @@ export default class locketz extends Component {
 
     } else {
       return (
-        <Login loggedIn={this.state.loggedIn}/>
+        <Login loggedIn={this.state.loggedIn} userType={this.state.userType}/>
       )
     }
   }

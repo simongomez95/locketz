@@ -3,5 +3,5 @@
  */
 
 config = {
-  siteUrl: 'http://penesito.com'
+  siteUrl: 'http://localhost:80'
 };
