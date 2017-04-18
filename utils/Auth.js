@@ -53,14 +53,6 @@ class Auth {
       );
       return false;
     } else {
-      Alert.alert(
-        'Missing Field',
-        'FALTA UN CAMPO U PIECE OF SHIT',
-        [
-          {text: email, onPress: () => console.log('OK Pressed')},
-        ],
-        { cancelable: false }
-      );
       return fetch(url, {
         method: 'POST',
         headers: {
