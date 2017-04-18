@@ -22,9 +22,10 @@ class CreatorSideBar extends Component {
     render(){
         return(
             <Container>
-                <Header style={{backgroundColor:"#b9f6ca", height:200}}>
-                    <Body alignItems="center">
-                        <Title>Locketz</Title>
+                <Header style={{backgroundColor:"#8BF0A7", height:100}}>
+                    <Body alignItems="flex-end">
+                    <Title style={{color:'#052A0F'}}>Locketz</Title>
+                    <Icon name="cog" style={{color:'#052A0F'}}/>
                     </Body>
                 </Header>
                 <Content>

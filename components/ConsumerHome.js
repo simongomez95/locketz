@@ -34,20 +34,20 @@ class ConsumerHome extends Component {
                     ref={(ref) => this._drawer = ref}
                     content={<SideBar/>}
                     tapToClose={true}
-                    openDrawerOffset={0.6} // 20% gap on the right side of drawer
+                    openDrawerOffset={0.6} // 60% gap on the right side of drawer
                     panCloseMask={0.2}
                     closedDrawerOffset={-3}
                     tweenHandler={(ratio) => ({
-                main: { opacity:(2-ratio)/2 }
+                    main: { opacity:(2-ratio)/2 }
                 })}>
-                    <Header style={{backgroundColor:"#b9f6ca"}}>
+                    <Header style={{backgroundColor:"#8BF0A7"}}>
                         <Left>
                             <Button transparent
                                     onPress={() => {this.openDrawer()}}>
-                                <Icon name="menu" size={20} color='white' />
+                                <Icon name="menu"  style={{color:'#052A0F'}} />
                             </Button>
                         </Left>
-                        <Body alignItems = "center"><Title>Home</Title></Body>
+                        <Body alignItems = "center"><Title style={{color:'#052A0F'}}>Home</Title></Body>
                         <Right/>
                     </Header>
 
