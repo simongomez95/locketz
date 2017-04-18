@@ -41,7 +41,7 @@ class Auth {
   }
 
   signIn (email, password) {
-    const url = config.siteUrl +'/auth';
+    const url = 'http://34.205.177.234/auth';
     if (!email || !password) {
       Alert.alert(
         'Missing Field',
@@ -53,14 +53,6 @@ class Auth {
       );
       return false;
     } else {
-      Alert.alert(
-        'Missing Field',
-        'FALTA UN CAMPO U PIECE OF SHIT',
-        [
-          {text: email, onPress: () => console.log('OK Pressed')},
-        ],
-        { cancelable: false }
-      );
       return fetch(url, {
         method: 'POST',
         headers: {
