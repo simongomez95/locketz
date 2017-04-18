@@ -29,6 +29,14 @@ export default class locketz extends Component {
 
   }
 
+  login(userType, token) {
+    this.setState({
+      loggedIn: true,
+      userType: userType,
+      token: token
+    });
+  }
+
   render() {
     if (this.state.loggedIn) {
       if (this.state.userType) {
@@ -39,7 +47,7 @@ export default class locketz extends Component {
 
     } else {
       return (
-        <Login loggedIn={this.state.loggedIn} userType={this.state.userType}/>
+        <Login login={this.login.bind(this)} userType={this.state.userType}/>
       )
     }
   }
