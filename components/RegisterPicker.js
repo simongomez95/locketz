@@ -10,7 +10,7 @@ export default class PickerExample extends Component {
     super(props);
     this.state = {
       selectedItem: undefined,
-      selected1: 'key1',
+      selected1: 'false',
       results: {
         items: []
       }
