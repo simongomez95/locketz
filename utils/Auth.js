@@ -41,7 +41,7 @@ class Auth {
   }
 
   signIn (email, password) {
-    const url = config.siteUrl +'/auth';
+    const url = 'http://34.205.177.234/auth';
     if (!email || !password) {
       Alert.alert(
         'Missing Field',
