@@ -20,7 +20,7 @@ import CreatorSideBar from './components/CreatorSideBar';
 export default class locketz extends Component {
     render() {
         return (
-            <CreatorHome></CreatorHome>
+            <ConsumerHome></ConsumerHome>
         );
     }
 }
