@@ -65,7 +65,7 @@ class Login extends Component {
                   onPress={
                     () => {this.auth.signIn(this.state.email, this.state.password).
                     then((res) => {
-                      this.props.userType = res.userType;
+                      this.props.userType = res.user.userType;
                     })
                     }
                   }

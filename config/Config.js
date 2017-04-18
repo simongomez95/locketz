@@ -3,5 +3,5 @@
  */
 
 config = {
-  siteUrl: 'http://localhost:80'
+  siteUrl: 'http://34.205.177.234'
 };
