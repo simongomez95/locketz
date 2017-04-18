@@ -27,6 +27,12 @@ class Register extends Component {
     this.auth = new Auth()
   }
 
+  setUserType (type) {
+    this.setState({
+      userType: type
+    })
+  }
+
   render() {
     return (
       <Container>
@@ -40,8 +46,9 @@ class Register extends Component {
                     <Input
                       placeholder="Email"
                       onChange={(event) => {
-                        this.setState({email: event.nativeEvent.text
-                        })}}
+                        this.setState({email: event.nativeEvent.text})
+                      }
+                      }
                     />
                   </Item>
                   <Item>
@@ -71,7 +78,10 @@ class Register extends Component {
                       />
                     </Item>
                     <Item>
-                      <RegisterPicker/>
+                      <RegisterPicker setUserType={ () => {
+                        this.setUserType.bind(this)
+                      }}
+                      />
                     </Item>
                   </Item>
                 </Form>
@@ -86,8 +96,7 @@ class Register extends Component {
                     () => {this.auth.signUp(this.state.email, this.state.username, this.state.password,
                       this.state.confirmPassword, this.state.userType).
                     then((res) => {
-                      this.props.loggedIn = true;
-                      this.props.userType = res.user.userType;
+                      this.props.login(res.user.userType, res.token);
                     })
                     }
                   }

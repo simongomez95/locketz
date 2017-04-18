@@ -75,6 +75,14 @@ class Auth {
     return token;
   }
 
+  async setToken (token) {
+    try {
+      await AsyncStorage.setItem('@token', token);
+    } catch (error) {
+      console.log("error saving data")
+    }
+  }
+
 }
 
 export default Auth;

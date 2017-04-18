@@ -17,16 +17,14 @@ export default class PickerExample extends Component {
     }
   }
   onValueChange (value: string) {
-    this.setState({
-      selected1 : value
-    });
+    this.props.setUserType(value)
   }
   render() {
     return (
       <Container>
         <Content>
           <Picker
-            iosHeader="Select one"
+            iosHeader="user Type"
             mode="dropdown"
             selectedValue={this.state.selected1}
             onValueChange={this.onValueChange.bind(this)}>

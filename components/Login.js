@@ -39,8 +39,11 @@ class Login extends Component {
                     <Input
                       placeholder="Email"
                       onChange={(event) => {
-                        this.setState({email: event.nativeEvent.text
-                        })}}
+                        this.setState({
+                          email: event.nativeEvent.text
+                        })
+                      }
+                      }
                     />
                   </Item>
                   <Item>
@@ -77,7 +80,9 @@ class Login extends Component {
 
             <Row size={20}>
               <Col>
-                <Button style={{backgroundColor:"#b9f6ca"}} block>
+                <Button style={{backgroundColor:"#b9f6ca"}} block
+                        login={this.props.login.bind(this)}
+                >
                   <Text style={{color:"#ffffff"}}> Register </Text>
                 </Button>
               </Col>

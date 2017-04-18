@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Auth from './utils/Auth'
 
 import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
@@ -23,6 +24,7 @@ export default class locketz extends Component {
       userType: false,
       token: false
     };
+    this.auth = new Auth();
   }
 
   componentWillMount() {
@@ -35,6 +37,7 @@ export default class locketz extends Component {
       userType: userType,
       token: token
     });
+    this.auth.setToken(token)
   }
 
   render() {
