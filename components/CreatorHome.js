@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input, Item, Button, Text
         ,} from 'native-base';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import Drawer from 'react-native-drawer';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import SideBar from './CreatorSideBar';
@@ -16,30 +16,41 @@ class CreatorHome extends Component {
         this.state = {}
     }
 
-    closeControlPanel = () => {
-        this._drawer.close()
-    };
-    openControlPanel = () => {
-        this._drawer.open()
-    };
+
 
     render() {
+
+        closeDrawer = () => {
+            this._drawer.close()
+        };
+        openDrawer = () => {
+            this._drawer.open()
+        };
+
         return(
             <Drawer
-                ref={(ref) => this._drawer = ref}
-                content={<SideBar navigator={this.navigator}/>}
-            >
+                type="overlay"
+                content={<SideBar/>}
+                tapToClose={true}
+                openDrawerOffset={0.2} // 20% gap on the right side of drawer
+                panCloseMask={0.2}
+                closedDrawerOffset={-3}
+                tweenHandler={(ratio) => ({
+                main: { opacity:(2-ratio)/2 }
+                })}>
 
-                <Container>
-                    <Header style={{backgroundColor:"#b9f6ca"}}>
-                        <Left>
-                            <Button transparent>
-                                <Icon name="menu" size={20} color='white' />
-                            </Button>
-                        </Left>
-                        <Body alignItems = "center"><Title>Home</Title></Body>
-                        <Right/>
-                    </Header>
+                <View>
+                    <Container>
+                        <Header style={{backgroundColor:"#b9f6ca"}}>
+                            <Left>
+                                <Button transparent
+                                        onPress={() => {this._drawer.open()}}>
+                                    <Icon name="menu" size={20} color='white' />
+                                </Button>
+                            </Left>
+                            <Body alignItems = "center"><Title>Home</Title></Body>
+                            <Right/>
+                        </Header>
 
                         <Content style={{padding: 10}}>
                             <Grid>
@@ -73,7 +84,8 @@ class CreatorHome extends Component {
 
                             </Grid>
                         </Content>
-                </Container>
+                    </Container>
+                </View>
             </Drawer>
 
 

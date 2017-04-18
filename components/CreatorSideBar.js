@@ -14,6 +14,11 @@ class CreatorSideBar extends Component {
         this.state = {}
     }
 
+    navigate(id) {
+        this.props.navigator.push({ id });
+    }
+
+
     render(){
         return(
             <Container>
