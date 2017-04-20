@@ -23,6 +23,12 @@ class Register extends Component {
     }
   }
 
+  _navigate(){
+    this.props.navigator.push({
+      name: 'Register', // Matches route.name
+    })
+  }
+
   componentWillMount() {
     this.auth = new Auth()
   }

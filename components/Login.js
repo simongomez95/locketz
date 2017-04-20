@@ -17,6 +17,12 @@ class Login extends Component {
     }
   }
 
+  _navigate(){
+    this.props.navigator.push({
+      name: 'Login', // Matches route.name
+    })
+  }
+
   componentWillMount() {
     this.auth = new Auth()
   }
@@ -81,7 +87,11 @@ class Login extends Component {
             <Row size={20}>
               <Col>
                 <Button style={{backgroundColor:"#b9f6ca"}} block
-                        login={this.props.login.bind(this)}
+                        onPress={
+                          () => {
+                            this.props.navigator.push('Register')
+                          }
+                        }
                 >
                   <Text style={{color:"#ffffff"}}> Register </Text>
                 </Button>

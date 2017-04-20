@@ -9,12 +9,14 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 import Auth from './utils/Auth'
 
 import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
+import Register from "./components/Register";
 
 export default class locketz extends Component {
   constructor(props) {
@@ -40,19 +42,31 @@ export default class locketz extends Component {
     this.auth.setToken(token)
   }
 
-  render() {
+  renderScene (route, navigator) {
+    if(route.name == 'Register') {
+      return <Register login={this.login.bind(this)} navigator={navigator} />
+    }
     if (this.state.loggedIn) {
       if (this.state.userType) {
         return (
-          <CreatorHome/>
+          <CreatorHome navigator={navigator}/>
         );
       }
 
     } else {
       return (
-        <Login login={this.login.bind(this)} userType={this.state.userType}/>
+        <Login login={this.login.bind(this)} navigator={navigator}/>
       )
     }
+  }
+
+  render() {
+    return (
+      <Navigator
+        style={{ flex:1 }}
+        initialRoute={{ name: 'Main' }}
+        renderScene={ this.renderScene } />
+    );
   }
 }
 
