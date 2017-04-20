@@ -9,7 +9,7 @@ class Auth {
 
   signUp (email, username, password, confirmPassword, userType) {
     const url = config.siteUrl + '/user/create';
-    if (!email || !username || !password || !confirmPassword || !userType) {
+    if (!email || !username || !password || !confirmPassword) {
       Alert.alert(
         'Missing Field',
         'FALTA UN CAMPO U PIECE OF SHIT',
@@ -34,6 +34,9 @@ class Auth {
           userType: userType
         })
       }).then((response) => response.json())
+        .then((res) => {
+          this.setUserData(res.token, res.user.userType);
+        })
         .catch((error) => {
           console.error(error);
         });
@@ -61,9 +64,12 @@ class Auth {
         },
         body: JSON.stringify({
           email: email,
-          password: password
+          password: password.toString()
         })
-      }).then((response) => response.json())
+      }).then((response) => response.json()).
+      then((res) => {
+        this.setUserData(res.token, res.user.userType);
+      })
         .catch((error) => {
           console.error(error);
         });
@@ -75,9 +81,15 @@ class Auth {
     return token;
   }
 
-  async setToken (token) {
+  async getUserType () {
+    let type = await AsyncStorage.getItem('userType');
+    return type;
+  }
+
+  async setUserData (token, userType) {
     try {
-      await AsyncStorage.setItem('@token', token);
+      await AsyncStorage.setItem('token', token);
+      await AsyncStorage.setItem('userType', userType.toString());
     } catch (error) {
       console.log("error saving data")
     }

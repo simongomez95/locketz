@@ -3,9 +3,10 @@
  */
 import React, { Component } from 'react';
 import { Container, Content, Picker } from 'native-base';
-const Item = Picker.Item;​
 
-export default class PickerExample extends Component {
+const Item = Picker.Item;
+class RegisterPicker extends Component {
+
   constructor(props) {
     super(props);
     this.state = {

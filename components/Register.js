@@ -75,20 +75,20 @@ class Register extends Component {
                       }
                       }
                     />
-                    <Item>
-                      <Input
-                        placeholder="Confirm Password"
-                        onChange={(event) => {
-                          this.setState({confirmPassword: event.nativeEvent.text
-                          })}}
-                      />
-                    </Item>
-                    <Item>
-                      <RegisterPicker setUserType={ () => {
-                        this.setUserType.bind(this)
-                      }}
-                      />
-                    </Item>
+                  </Item>
+                  <Item>
+                    <Input
+                      placeholder="Confirm Password"
+                      onChange={(event) => {
+                        this.setState({confirmPassword: event.nativeEvent.text
+                        })}}
+                    />
+                  </Item>
+                  <Item>
+                    <RegisterPicker setUserType={ () => {
+                      this.setUserType.bind(this)
+                    }}
+                    />
                   </Item>
                 </Form>
               </Col>
@@ -99,11 +99,16 @@ class Register extends Component {
                 <Button
                   style={{backgroundColor:"#b9f6ca"}} block
                   onPress={
-                    () => {this.auth.signUp(this.state.email, this.state.username, this.state.password,
-                      this.state.confirmPassword, this.state.userType).
-                    then((res) => {
-                      this.props.login(res.user.userType, res.token);
-                    })
+                    () => {
+                      this.auth.signUp(this.state.email, this.state.username, this.state.password,
+                        this.state.confirmPassword, this.state.userType);
+                      if (this.auth.getToken()) {
+                        if (this.auth.getUserType()) {
+                          this.props.navigator.replace({id: 'CreatorHome'})
+                        } else if (!this.auth.getUserType()) {
+                          this.props.navigator.replace({id: 'ConsumerHome'})
+                        }
+                      }
                     }
                   }
                 >

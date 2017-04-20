@@ -72,10 +72,15 @@ class Login extends Component {
                 <Button
                   style={{backgroundColor:"#b9f6ca"}} block
                   onPress={
-                    () => {this.auth.signIn(this.state.email, this.state.password).
-                    then((res) => {
-                      this.props.login(res.user.userType, res.token);
-                    })
+                    () => {
+                      this.auth.signIn(this.state.email.toString().toLowerCase(), this.state.password.toString());
+                      if (this.auth.getToken()) {
+                        if (this.auth.getUserType()) {
+                          this.props.navigator.replace({id: 'CreatorHome'})
+                        } else if (!this.auth.getUserType()) {
+                          this.props.navigator.replace({id: 'ConsumerHome'})
+                        }
+                      }
                     }
                   }
                 >
@@ -89,7 +94,7 @@ class Login extends Component {
                 <Button style={{backgroundColor:"#b9f6ca"}} block
                         onPress={
                           () => {
-                            this.props.navigator.push('Register')
+                            this.props.navigator.push({id: 'Register'})
                           }
                         }
                 >
@@ -105,4 +110,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default Login;

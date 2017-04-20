@@ -21,6 +21,9 @@ import Register from "./components/Register";
 export default class locketz extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
     this.state = {
       loggedIn: false,
       userType: false,
@@ -29,42 +32,29 @@ export default class locketz extends Component {
     this.auth = new Auth();
   }
 
-  componentWillMount() {
-
-  }
-
-  login(userType, token) {
-    this.setState({
-      loggedIn: true,
-      userType: userType,
-      token: token
-    });
-    this.auth.setToken(token)
-  }
-
   renderScene (route, navigator) {
-    if(route.name == 'Register') {
-      return <Register login={this.login.bind(this)} navigator={navigator} />
+    if(route.id == 'Register') {
+      return <Register navigator={navigator} />
     }
-    if (this.state.loggedIn) {
-      if (this.state.userType) {
-        return (
-          <CreatorHome navigator={navigator}/>
-        );
-      }
-
-    } else {
-      return (
-        <Login login={this.login.bind(this)} navigator={navigator}/>
-      )
+    if(route.id == 'Login') {
+      return <Login  navigator={navigator} />
+    }
+    if(route.id == 'CreatorHome') {
+      return <CreatorHome navigator={navigator} />
     }
   }
 
   render() {
+    let initialRoute = {id: 'Login'};
+    if (this.auth.getToken()) {
+      if (!this.auth.getUserType()) {
+        initialRoute = {id: 'CreatorHome'}
+      }
+    }
     return (
       <Navigator
         style={{ flex:1 }}
-        initialRoute={{ name: 'Main' }}
+        initialRoute={ initialRoute }
         renderScene={ this.renderScene } />
     );
   }
