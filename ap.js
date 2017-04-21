@@ -14,11 +14,13 @@ import {
 
 import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
+import ConsumerHome from './components/ConsumerHome';
+import CreatorSideBar from './components/CreatorSideBar';
 
 export default class locketz extends Component {
     render() {
         return (
-            <CreatorHome></CreatorHome>
+            <ConsumerHome></ConsumerHome>
         );
     }
 }
