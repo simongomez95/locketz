@@ -50,6 +50,7 @@ export default class locketz extends Component {
       if (!this.auth.getUserType()) {
         initialRoute = {id: 'CreatorHome'}
       }
+      
     }
     return (
       <Navigator

@@ -9,6 +9,7 @@ class Auth {
 
   signUp (email, username, password, confirmPassword, userType) {
     const url = config.siteUrl + '/user/create';
+
     if (!email || !username || !password || !confirmPassword) {
       Alert.alert(
         'Missing Field',
@@ -94,7 +95,6 @@ class Auth {
       console.log("error saving data")
     }
   }
-
 }
 
 export default Auth;
