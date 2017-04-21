@@ -1,10 +1,13 @@
+/**
+ * Created by yolas on 4/17/2017.
+ */
 import React, { Component, } from 'react';
 import { Container, Content, Body, Title, Header, Icon, Form, Input, Item, Button, Text } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Auth from '../utils/Auth';
+import RegisterPicker from './RegisterPicker'
 
-class Login extends Component {
-
+class Register extends Component {
   static propTypes = {};
 
   static defaultProps = {};
@@ -13,18 +16,27 @@ class Login extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      username: '',
+      password: '',
+      confirmPassword: '',
+      userType: false
     }
   }
 
   _navigate(){
     this.props.navigator.push({
-      name: 'Login', // Matches route.name
+      name: 'Register', // Matches route.name
     })
   }
 
   componentWillMount() {
     this.auth = new Auth()
+  }
+
+  setUserType (type) {
+    this.setState({
+      userType: type
+    })
   }
 
   render() {
@@ -33,23 +45,24 @@ class Login extends Component {
         <Header style={{backgroundColor:"#b9f6ca"}}></Header>
         <Content contentContainerStyle={{flex: 1}} style={{padding: 10}}>
           <Grid>
-            <Row size={10}>
-              <Col alignItems="center">
-                <Icon name='cash' style={{fontSize: 56}}></Icon>
-              </Col>
-            </Row>
-            <Row size={70} style={{paddingTop: 50}}>
+            <Row size={80} style={{paddingTop: 50}}>
               <Col>
                 <Form>
                   <Item>
                     <Input
                       placeholder="Email"
                       onChange={(event) => {
-                        this.setState({
-                          email: event.nativeEvent.text
-                        })
+                        this.setState({email: event.nativeEvent.text})
                       }
                       }
+                    />
+                  </Item>
+                  <Item>
+                    <Input
+                      placeholder="Username"
+                      onChange={(event) => {
+                        this.setState({username: event.nativeEvent.text
+                        })}}
                     />
                   </Item>
                   <Item>
@@ -63,6 +76,20 @@ class Login extends Component {
                       }
                     />
                   </Item>
+                  <Item>
+                    <Input
+                      placeholder="Confirm Password"
+                      onChange={(event) => {
+                        this.setState({confirmPassword: event.nativeEvent.text
+                        })}}
+                    />
+                  </Item>
+                  <Item>
+                    <RegisterPicker setUserType={ () => {
+                      this.setUserType.bind(this)
+                    }}
+                    />
+                  </Item>
                 </Form>
               </Col>
             </Row>
@@ -73,7 +100,8 @@ class Login extends Component {
                   style={{backgroundColor:"#b9f6ca"}} block
                   onPress={
                     () => {
-                      this.auth.signIn(this.state.email.toString().toLowerCase(), this.state.password.toString());
+                      this.auth.signUp(this.state.email, this.state.username, this.state.password,
+                        this.state.confirmPassword, this.state.userType);
                       if (this.auth.getToken()) {
                         if (this.auth.getUserType()) {
                           this.props.navigator.replace({id: 'CreatorHome'})
@@ -84,25 +112,10 @@ class Login extends Component {
                     }
                   }
                 >
-                  <Text style={{color:"#ffffff"}}> Login </Text>
+                  <Text style={{color:"#ffffff"}}> Go! </Text>
                 </Button>
               </Col>
             </Row>
-
-            <Row size={20}>
-              <Col>
-                <Button style={{backgroundColor:"#b9f6ca"}} block
-                        onPress={
-                          () => {
-                            this.props.navigator.push({id: 'Register'})
-                          }
-                        }
-                >
-                  <Text style={{color:"#ffffff"}}> Register </Text>
-                </Button>
-              </Col>
-            </Row>
-
           </Grid>
         </Content>
       </Container>
@@ -110,4 +123,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register
