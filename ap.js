@@ -16,7 +16,10 @@ import Auth from './utils/Auth'
 
 import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
+import ConsumerHome from './components/ConsumerHome'
 import Register from "./components/Register";
+import SideBar from './components/CreatorSideBar';
+import Settings from './components/Settings';
 
 export default class locketz extends Component {
   constructor(props) {
@@ -41,6 +44,15 @@ export default class locketz extends Component {
     }
     if(route.id == 'CreatorHome') {
       return <CreatorHome navigator={navigator} />
+    }
+    if(route.id == 'ConsumerHome'){
+      return <ConsumerHome navigator={navigator}/>
+    }
+    if(route.id == 'SideBar'){
+        return <SideBar navigator={navigator}/>
+    }
+    if(route.id == 'Settings'){
+        return <Settings navigator={navigator}/>
     }
   }
 

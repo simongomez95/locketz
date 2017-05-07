@@ -2,6 +2,7 @@ import React, { Component, } from 'react';
 import { Container, Content, Body, Title, Header, Icon, Form, Input, Item, Button, Text } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Auth from '../utils/Auth';
+import style from '../styles/Styles';
 
 class Login extends Component {
 
@@ -30,7 +31,7 @@ class Login extends Component {
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor:"#b9f6ca"}}></Header>
+        <Header style={{backgroundColor:"#9C27B0"}}></Header>
         <Content contentContainerStyle={{flex: 1}} style={{padding: 10}}>
           <Grid>
             <Row size={10}>
@@ -70,7 +71,7 @@ class Login extends Component {
             <Row size={20}>
               <Col>
                 <Button
-                  style={{backgroundColor:"#b9f6ca"}} block
+                  style={{backgroundColor:"#9C27B0"}} block
                   onPress={
                     () => {
                       this.auth.signIn(this.state.email.toString().toLowerCase(), this.state.password.toString());
@@ -84,21 +85,21 @@ class Login extends Component {
                     }
                   }
                 >
-                  <Text style={{color:"#ffffff"}}> Login </Text>
+                  <Text style={{color:"#FFFFFF"}}> Login </Text>
                 </Button>
               </Col>
             </Row>
 
             <Row size={20}>
               <Col>
-                <Button style={{backgroundColor:"#b9f6ca"}} block
+                <Button style={{backgroundColor:"#9C27B0"}} block
                         onPress={
                           () => {
-                            this.props.navigator.push({id: 'Register'})
+                            this.props.navigator.push({id: 'Settings'})
                           }
                         }
                 >
-                  <Text style={{color:"#ffffff"}}> Register </Text>
+                  <Text style={{color:"#FFFFFF"}}> Register </Text>
                 </Button>
               </Col>
             </Row>

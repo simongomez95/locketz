@@ -8,11 +8,11 @@ import SideBar from './CreatorSideBar';
 
 class CreatorHome extends Component {
 
-    static propTypes = {}
-    static defaultProps = {}
+    static propTypes = {};
+    static defaultProps = {};
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {}
     }
 
@@ -39,7 +39,7 @@ class CreatorHome extends Component {
                     tweenHandler={(ratio) => ({
                     main: { opacity:(2-ratio)/2 }
                 })}>
-                    <Header style={{backgroundColor:"#b9f6ca"}}>
+                    <Header style={{backgroundColor:"#9C27B0"}}>
                         <Left>
                             <Button transparent
                                     onPress={() => {this.openDrawer()}}>

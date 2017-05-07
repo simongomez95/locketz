@@ -42,7 +42,7 @@ class Register extends Component {
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor:"#b9f6ca"}}></Header>
+        <Header style={{backgroundColor:"#9C27B0"}}></Header>
         <Content contentContainerStyle={{flex: 1}} style={{padding: 10}}>
           <Grid>
             <Row size={80} style={{paddingTop: 50}}>
@@ -97,7 +97,7 @@ class Register extends Component {
             <Row size={20}>
               <Col>
                 <Button
-                  style={{backgroundColor:"#b9f6ca"}} block
+                  style={{backgroundColor:"#9C27B0"}} block
                   onPress={
                     () => {
                       this.auth.signUp(this.state.email, this.state.username, this.state.password,
