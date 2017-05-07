@@ -10,29 +10,29 @@ import RNFetchBlob from 'react-native-fetch-blob'
 class Content {
 
   token = Auth.getToken();
-
-  // uploadPhoto (photo) {
-  //   const url = config.siteUrl + '/creator/uploadPhoto';
-  //   if (!photo) {
-  //     return false;
-  //   } else {
-  //     return fetch(url, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json',
-  //         'Authorization': 'Bearer ' + this.token
-  //       },
-  //       file: {
-  //         photo: photo
-  //       }
-  //     }).then((response) => response.json())
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   }
-  // }
-
+  /**
+   uploadPhoto (photo) {
+    const url = config.siteUrl + '/creator/uploadPhoto';
+    if (!photo) {
+      return false;
+    } else {
+      return fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.token
+        },
+        file: {
+          photo: photo
+        }
+      }).then((response) => response.json())
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }
+   **/
   uploadPhoto (photo) {
     const url = config.siteUrl + '/creator/uploadPhoto';
     RNFetchBlob.fetch('POST', url, {
@@ -48,6 +48,37 @@ class Content {
       .catch((err) => {
         // error handling ..
       })
+  }
+
+  getPhotos() {
+    const url = config.siteUrl + '/consumer/getPhotos';
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+      }
+    }).then((response) => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  downloadPhoto(photoId) {
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        photoId: photoId,
+      })
+    }).then((response) => response.json())
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
 
