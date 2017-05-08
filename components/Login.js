@@ -95,7 +95,7 @@ class Login extends Component {
                 <Button style={{backgroundColor:"#9C27B0"}} block
                         onPress={
                           () => {
-                            this.props.navigator.push({id: 'Settings'})
+                            this.props.navigator.push({id: 'AnalyticsBase'})
                           }
                         }
                 >

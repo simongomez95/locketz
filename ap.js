@@ -20,6 +20,7 @@ import ConsumerHome from './components/ConsumerHome'
 import Register from "./components/Register";
 import SideBar from './components/CreatorSideBar';
 import Settings from './components/Settings';
+import AnalyticsBase from './components/AnalyticsBase';
 
 export default class locketz extends Component {
   constructor(props) {
@@ -53,6 +54,9 @@ export default class locketz extends Component {
     }
     if(route.id == 'Settings'){
         return <Settings navigator={navigator}/>
+    }
+    if(route.id == 'AnalyticsBase'){
+        return <AnalyticsBase navigator={navigator}/>
     }
   }
 

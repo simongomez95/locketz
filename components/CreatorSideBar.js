@@ -34,11 +34,14 @@ class CreatorSideBar extends Component {
                             <Button transparent block style={{height:30,width:140}}
                                 onPress={
                                  () => {
-                                    this.props.navigator.push({id: 'Register'})
+                                    this.props.navigator.push({id: 'CreatorHome'})
                                  }
                                 }
                             >
-                                <Text>Home</Text>
+                                <Left>
+                                    <Text>Home</Text>
+                                </Left>
+
                             </Button>
                         </ListItem>
 
@@ -50,7 +53,25 @@ class CreatorSideBar extends Component {
                                  }
                                 }
                             >
-                                <Text>Settings</Text>
+                                <Left>
+                                    <Text>Upload</Text>
+                                </Left>
+
+                            </Button>
+                        </ListItem>
+
+                        <ListItem>
+                            <Button transparent block style={{height:30,width:140}}
+                                    onPress={
+                                 () => {
+                                    this.props.navigator.push({id: 'AnalyticsBase'})
+                                 }
+                                }
+                            >
+                                <Left>
+                                    <Text>Analytics</Text>
+                                </Left>
+
                             </Button>
                         </ListItem>
 
@@ -62,31 +83,9 @@ class CreatorSideBar extends Component {
                                  }
                                 }
                             >
-                                <Text>Settings</Text>
-                            </Button>
-                        </ListItem>
-
-                        <ListItem>
-                            <Button transparent block style={{height:30,width:140}}
-                                    onPress={
-                                 () => {
-                                    this.props.navigator.push({id: 'Settings'})
-                                 }
-                                }
-                            >
-                                <Text>Settings</Text>
-                            </Button>
-                        </ListItem>
-
-                        <ListItem>
-                            <Button transparent block style={{height:30,width:140}}
-                                    onPress={
-                                 () => {
-                                    this.props.navigator.push({id: 'Settings'})
-                                 }
-                                }
-                            >
-                                <Text>Settings</Text>
+                                <Left>
+                                    <Text>Settings</Text>
+                                </Left>
                             </Button>
                         </ListItem>
                     </List>
