@@ -31,7 +31,7 @@ class CreatorHome extends Component {
                 <Drawer
                     type="overlay"
                     ref={(ref) => this._drawer = ref}
-                    content={<SideBar/>}
+                    content={<SideBar navigator={this.props.navigator}/>}
                     tapToClose={true}
                     openDrawerOffset={0.6} // 60% gap on the right side of drawer
                     panCloseMask={0.2}
