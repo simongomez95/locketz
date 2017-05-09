@@ -2,7 +2,7 @@ import React, { Component, } from 'react';
 import { Container, Content, Body, Title, Header, Icon, Form, Input, Item, Button, Text } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Auth from '../utils/Auth';
-import style from '../styles/Styles';
+import style from '../styles/style';
 
 class Login extends Component {
 
@@ -14,7 +14,8 @@ class Login extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      debug: 'Login'
     }
   }
 
@@ -26,6 +27,19 @@ class Login extends Component {
 
   componentWillMount() {
     this.auth = new Auth()
+  }
+
+  async elegirHome() {
+    const token = await this.auth.getToken();
+    const userType = await this.auth.getUserType();
+    if (token) {
+      console.log(userType);
+      if (userType == 'creador') {
+        this.props.navigator.replace({id: 'CreatorHome'})
+      } else if (userType == 'consumidor') {
+        this.props.navigator.replace({id: 'ConsumerHome'})
+      }
+    }
   }
 
   render() {
@@ -75,13 +89,7 @@ class Login extends Component {
                   onPress={
                     () => {
                       this.auth.signIn(this.state.email.toString().toLowerCase(), this.state.password.toString());
-                      if (this.auth.getToken()) {
-                        if (this.auth.getUserType()) {
-                          this.props.navigator.replace({id: 'CreatorHome'})
-                        } else if (!this.auth.getUserType()) {
-                          this.props.navigator.replace({id: 'ConsumerHome'})
-                        }
-                      }
+                      this.elegirHome();
                     }
                   }
                 >

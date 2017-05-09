@@ -84,7 +84,11 @@ class Auth {
 
   async getUserType () {
     let type = await AsyncStorage.getItem('userType');
-    return type;
+    if (type == "true") {
+      return "creador";
+    } else {
+      return "consumidor"
+    }
   }
 
   async setUserData (token, userType) {
