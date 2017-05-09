@@ -1,27 +1,15 @@
 /**
- * Created by lope1 on 5/7/2017.
+ * Created by lope1 on 5/9/2017.
  */
 import React, { Component } from 'react';
 import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input, Item, Button, Text
     , List, ListItem} from 'native-base';
 import { Image } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import Chart from 'react-native-chart';
 import Drawer from 'react-native-drawer';
 import SideBar from './CreatorSideBar';
 
-const data1 = [
-    [0, 50],
-    [1, 120],
-    [5, 560],
-    [10, 1200],
-];
-const data2 =[
-    ["hombre",75],
-    ["mujer",25]
-];
-
-class AnalyticsBase extends Component {
+class Search extends Component {
 
     static propTypes = {};
     static defaultProps = {};
@@ -33,7 +21,7 @@ class AnalyticsBase extends Component {
 
     _navigate(){
         this.props.navigator.push({
-            name: 'AnalyticsBase', // Matches route.name
+            name: 'Search', // Matches route.name
         })
     }
 
@@ -46,7 +34,7 @@ class AnalyticsBase extends Component {
 
     render(){
         return(
-            <Container >
+            <Container>
                 <Drawer
                     type="overlay"
                     ref={(ref) => this._drawer = ref}
@@ -56,8 +44,9 @@ class AnalyticsBase extends Component {
                     panCloseMask={0.2}
                     closedDrawerOffset={-3}
                     tweenHandler={(ratio) => ({
-                    main: { opacity:(2-ratio)/2 }
-                })}>
+                        main: { opacity:(2-ratio)/2 }
+                    })}>
+
                     <Header style={{backgroundColor:"#9C27B0"}}>
                         <Left>
                             <Button transparent
@@ -66,28 +55,20 @@ class AnalyticsBase extends Component {
                             </Button>
                         </Left>
                         <Body alignItems="flex-end">
-                        <Title style={{color:'#FFFFFF'}}>Channel Analytics</Title>
+                        <Title style={{color:'#FFFFFF'}}>Search</Title>
                         </Body>
                     </Header>
-                    <Content style={{padding: 10, flex:1}}>
-                        <Chart
-                            style={{width:300, height: 250}}
-                            data={data1}
-                            verticalGridStep={4}
-                            type="line"
-                        />
-                        <Chart
-                            style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
-                            data={data2}
-                            type="pie"
-                            showAxis={false}
-                        />
-                        <Chart
-                            style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
-                            data={data2}
-                            type="pie"
-                            showAxis={false}
-                        />
+                    <Content>
+                        <Header searchBar rounded style={{backgroundColor:"#7B1FA2"}}>
+                            <Item>
+                                <Icon name="ios-people" />
+                                <Input placeholder="People" />
+                                <Icon name="ios-search" />
+                            </Item>
+                            <Button transparent>
+                                <Text>Search</Text>
+                            </Button>
+                        </Header>
                     </Content>
                 </Drawer>
             </Container>
@@ -96,4 +77,4 @@ class AnalyticsBase extends Component {
 
 }
 
-export default AnalyticsBase
+export default Search;

@@ -43,10 +43,10 @@ class CreatorHome extends Component {
                         <Left>
                             <Button transparent
                                     onPress={() => {this.openDrawer()}}>
-                                <Icon name="menu"  style={{color:'#052A0F'}} />
+                                <Icon name="menu"  style={{color:'#ffffff'}} />
                             </Button>
                         </Left>
-                        <Body alignItems = "center"><Title style={{color:'#052A0F'}}>Home</Title></Body>
+                        <Body alignItems = "center"><Title style={{color:'#ffffff'}}>Home</Title></Body>
                         <Right/>
                     </Header>
 

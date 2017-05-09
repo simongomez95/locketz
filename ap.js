@@ -21,6 +21,7 @@ import Register from "./components/Register";
 import SideBar from './components/CreatorSideBar';
 import Settings from './components/Settings';
 import AnalyticsBase from './components/AnalyticsBase';
+import Search from './components/Search';
 
 export default class locketz extends Component {
   constructor(props) {
@@ -57,6 +58,9 @@ export default class locketz extends Component {
     }
     if(route.id == 'AnalyticsBase'){
         return <AnalyticsBase navigator={navigator}/>
+    }
+    if (route.id == 'Search') {
+        return <Search navigator={navigator}/>
     }
   }
 
