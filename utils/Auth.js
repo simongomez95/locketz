@@ -69,7 +69,21 @@ class Auth {
         })
       }).then((response) => response.json()).
       then((res) => {
-        this.setUserData(res.token, res.user.userType);
+        if (res.err) {
+          Alert.alert(
+            'Error',
+            res.err,
+            [
+              {text: 'OK :(', onPress: () => console.log('OK Pressed')},
+            ],
+            { cancelable: false }
+          );
+          return false;
+        } else {
+          this.setUserData(res.token, res.user.userType);
+          console.log("signin "+ JSON.stringify(res));
+          return true;
+        }
       })
         .catch((error) => {
           console.error(error);

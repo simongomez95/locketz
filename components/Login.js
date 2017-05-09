@@ -30,16 +30,20 @@ class Login extends Component {
   }
 
   async elegirHome() {
-    const token = await this.auth.getToken();
-    const userType = await this.auth.getUserType();
-    if (token) {
-      console.log(userType);
-      if (userType == 'creador') {
-        this.props.navigator.replace({id: 'CreatorHome'})
-      } else if (userType == 'consumidor') {
-        this.props.navigator.replace({id: 'ConsumerHome'})
+    const loginResponse = await this.auth.signIn(this.state.email.toString().toLowerCase(), this.state.password.toString());
+    console.log("loginResponse: "+JSON.stringify(loginResponse));
+    if(loginResponse) {
+      const token = await this.auth.getToken();
+      const userType = await this.auth.getUserType();
+      if (token) {
+        if (userType == 'creador') {
+          this.props.navigator.replace({id: 'CreatorHome'})
+        } else if (userType == 'consumidor') {
+          this.props.navigator.replace({id: 'ConsumerHome'})
+        }
       }
     }
+
   }
 
   render() {
@@ -88,8 +92,11 @@ class Login extends Component {
                   style={{backgroundColor:"#9C27B0"}} block
                   onPress={
                     () => {
-                      this.auth.signIn(this.state.email.toString().toLowerCase(), this.state.password.toString());
                       this.elegirHome();
+                      // if(loginResponse == true) {
+                      //   this.elegirHome();
+                      // }
+
                     }
                   }
                 >
