@@ -25,14 +25,18 @@ class FollowButton extends Component {
     this.subscription = new Subscription()
   }
 
+  setSeguido() {
+    this.setState({
+      seguido: true
+    })
+  }
+
   render() {
     if (!this.state.seguido) {
       return <Button onPress={
         () => {
-          this.subscription.follow(this.props.userId);
-          this.setState({
-            seguido: true
-          })
+          this.subscription.follow(this.props.userId, this.setSeguido.bind(this));
+
         }
       }>
         <Text>Follow</Text>

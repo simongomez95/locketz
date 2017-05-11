@@ -16,7 +16,7 @@ class Subscription {
     return token;
   }
 
-  follow (followUser) {
+  follow (followUser, switchSeguido) {
     const url = 'http://34.205.177.234/consumer/follow';
     this.auth.getToken().then((token) => {
       if (!followUser) {
@@ -34,8 +34,9 @@ class Subscription {
             followUser: followUser
           })
         }).then((res) => {
-          console.log(res.status);
-          return res.status == 200;
+          if (res.status == 200) {
+            switchSeguido();
+          }
         })
           .catch((error) => {
             console.error(error);
