@@ -62,32 +62,46 @@ class AnalyticsBase extends Component {
                         <Left>
                             <Button transparent
                                     onPress={() => {this.openDrawer()}}>
-                                <Icon name="menu"  style={{color:'#FFFFFF'}} />
+                                <Icon name="menu"  style={{color:'#ffffff'}} />
                             </Button>
                         </Left>
-                        <Body alignItems="flex-end">
-                        <Title style={{color:'#FFFFFF'}}>Channel Analytics</Title>
+                        <Body alignItems = "center">
+                        <Title style={{color:'#ffffff'}}>Analytics</Title>
                         </Body>
+                        <Right/>
                     </Header>
-                    <Content style={{padding: 10, flex:1}}>
-                        <Chart
-                            style={{width:300, height: 250}}
-                            data={data1}
-                            verticalGridStep={4}
-                            type="line"
-                        />
-                        <Chart
-                            style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
-                            data={data2}
-                            type="pie"
-                            showAxis={false}
-                        />
-                        <Chart
-                            style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
-                            data={data2}
-                            type="pie"
-                            showAxis={false}
-                        />
+                    <Content>
+                        <Grid>
+                            <Col alignItems="center">
+                                <Row>
+                                    <Chart
+                                        style={{width:300, height: 250}}
+                                        data={data1}
+                                        verticalGridStep={4}
+                                        type="line"
+                                    />
+                                </Row>
+                                <Row style={{paddingTop:15}}>
+                                    <Chart
+                                        style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
+                                        data={data2}
+                                        type="pie"
+                                        showAxis={false}
+                                    />
+                                </Row>
+                                <Row style={{paddingTop:15}}>
+                                    <Chart
+                                        style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
+                                        data={data2}
+                                        type="pie"
+                                        showAxis={false}
+                                    />
+                                </Row>
+                            </Col>
+                        </Grid>
+
+
+
                     </Content>
                 </Drawer>
             </Container>

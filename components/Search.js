@@ -51,12 +51,13 @@ class Search extends Component {
                         <Left>
                             <Button transparent
                                     onPress={() => {this.openDrawer()}}>
-                                <Icon name="menu"  style={{color:'#FFFFFF'}} />
+                                <Icon name="menu"  style={{color:'#ffffff'}} />
                             </Button>
                         </Left>
-                        <Body alignItems="flex-end">
-                        <Title style={{color:'#FFFFFF'}}>Search</Title>
+                        <Body alignItems = "center">
+                            <Title style={{color:'#ffffff'}}>Search</Title>
                         </Body>
+                        <Right/>
                     </Header>
                     <Content>
                         <Header searchBar rounded style={{backgroundColor:"#7B1FA2"}}>
