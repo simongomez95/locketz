@@ -36,7 +36,6 @@ class FollowButton extends Component {
       return <Button onPress={
         () => {
           this.subscription.follow(this.props.userId, this.setSeguido.bind(this));
-
         }
       }>
         <Text>Follow</Text>

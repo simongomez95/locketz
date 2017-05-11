@@ -35,7 +35,41 @@ class Subscription {
           })
         }).then((res) => {
           if (res.status == 200) {
+            //ESTO ES HORRIBLE PERO ES LA UNICA MANERA DE QUE FUNCIONE
             switchSeguido();
+          }
+        })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    })
+
+  }
+
+  searchUser (searchName) {
+    const url = 'http://34.205.177.234/consumer/searchUsers';
+    this.auth.getToken().then((token) => {
+      if (!query) {
+        return false;
+      } else {
+
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify({
+            searchName: searchName
+          })
+        })
+          .then((res) => {
+          if (res.err) {
+            return res.err;
+          } else {
+            return res.json();
           }
         })
           .catch((error) => {
