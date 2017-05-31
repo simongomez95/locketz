@@ -11,18 +11,20 @@ import Drawer from 'react-native-drawer';
 import SideBar from './CreatorSideBar';
 
 const data1 = [
-    [0, 50],
-    [1, 120],
-    [5, 560],
-    [10, 1200],
+    [0, 0],
+    [1, 5],
+    [2, 12],
+    [3, 19],
 ];
 const data2 =[
-    ["hombre",75],
-    ["mujer",25]
+    [0,70],
+    [1,30]
 ];
-const data3 =[
-    ["edad1",60],
-    ["edad2",40]
+const data3 = [
+    [0, 1],
+    [1, 3],
+    [3, 7],
+    [4, 9],
 ];
 
 class AnalyticsBase extends Component {

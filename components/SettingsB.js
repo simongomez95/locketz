@@ -1,28 +1,22 @@
 /**
- * Created by lope1 on 5/9/2017.
+ * Created by lope1 on 5/31/2017.
  */
 import React, { Component } from 'react';
 import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input, Item, Button, Text
-    , List, ListItem} from 'native-base';
-import { Image } from 'react-native'
-import { Col, Row, Grid } from 'react-native-easy-grid';
+    , List, ListItem, Switch,Footer} from 'native-base';
 import Drawer from 'react-native-drawer';
+import { Image } from 'react-native';
 import SideBar from './ConsumerSideBar';
 
-class Search extends Component {
+class SettingsB extends Component {
 
     static propTypes = {};
     static defaultProps = {};
 
     constructor(props) {
         super(props);
-        this.state = {}
-    }
+        this.state={}
 
-    _navigate(){
-        this.props.navigator.push({
-            name: 'Search', // Matches route.name
-        })
     }
 
     closeDrawer = () => {
@@ -31,6 +25,12 @@ class Search extends Component {
     openDrawer = () => {
         this._drawer.open()
     };
+
+    _navigate(){
+        this.props.navigator.push({
+            name: 'Settings', // Matches route.name
+        })
+    }
 
     render(){
         return(
@@ -44,9 +44,8 @@ class Search extends Component {
                     panCloseMask={0.2}
                     closedDrawerOffset={-3}
                     tweenHandler={(ratio) => ({
-                        main: { opacity:(2-ratio)/2 }
-                    })}>
-
+                    main: { opacity:(2-ratio)/2 }
+                })}>
                     <Header style={{backgroundColor:"#9C27B0"}}>
                         <Left>
                             <Button transparent
@@ -55,27 +54,34 @@ class Search extends Component {
                             </Button>
                         </Left>
                         <Body alignItems = "center">
-                            <Title style={{color:'#ffffff'}}>Search</Title>
+                        <Title style={{color:'#ffffff'}}>Settings</Title>
                         </Body>
                         <Right/>
                     </Header>
                     <Content>
-                        <Header searchBar rounded style={{backgroundColor:"#7B1FA2"}}>
-                            <Item>
-                                <Icon name="ios-people" />
-                                <Input placeholder="People" />
-                                <Icon name="ios-search" />
-                            </Item>
-                            <Button transparent>
-                                <Text>Search</Text>
-                            </Button>
-                        </Header>
+                        <ListItem icon>
+                            <Left>
+                                <Icon name="md-notifications"/>
+                            </Left>
+                            <Body>
+                            <Text>Notificaciones</Text>
+                            </Body>
+                            <Right>
+                                <Switch value={false} />
+                            </Right>
+                        </ListItem>
                     </Content>
+                    <Footer>
+                        <Button block danger style={{height:55,width:500}}>
+                            <Text>Logout</Text>
+                        </Button>
+                    </Footer>
                 </Drawer>
             </Container>
         )
     }
 
+
 }
 
-export default Search;
+export default SettingsB

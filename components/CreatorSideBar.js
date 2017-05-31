@@ -63,21 +63,6 @@ class CreatorSideBar extends Component {
                         <ListItem>
                             <Button transparent block style={{height:30,width:140}}
                                     onPress={
-                                        () => {
-                                            this.props.navigator.push({id: 'Search'})
-                                        }
-                                    }
-                            >
-                                <Left>
-                                    <Text>Search</Text>
-                                </Left>
-
-                            </Button>
-                        </ListItem>
-
-                        <ListItem>
-                            <Button transparent block style={{height:30,width:140}}
-                                    onPress={
                                  () => {
                                     this.props.navigator.push({id: 'AnalyticsBase'})
                                  }
