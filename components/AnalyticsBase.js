@@ -20,6 +20,10 @@ const data2 =[
     ["hombre",75],
     ["mujer",25]
 ];
+const data3 =[
+    ["edad1",60],
+    ["edad2",40]
+];
 
 class AnalyticsBase extends Component {
 
@@ -73,29 +77,56 @@ class AnalyticsBase extends Component {
                     <Content>
                         <Grid>
                             <Col alignItems="center">
-                                <Row>
-                                    <Chart
-                                        style={{width:300, height: 250}}
-                                        data={data1}
-                                        verticalGridStep={4}
-                                        type="line"
-                                    />
+                                <Row style={{paddingTop:15}}>
+                                    <Col alignItems="center">
+                                        <Row>
+                                            <Title>
+                                                <Text>Crecimiento de Segudores</Text>
+                                            </Title>
+                                        </Row>
+                                        <Row alignItems="center" style={{paddingTop:15}}>
+                                            <Chart
+                                                style={{width:300, height: 250}}
+                                                data={data1}
+                                                verticalGridStep={4}
+                                                type="line"
+                                            />
+                                        </Row>
+                                    </Col>
                                 </Row>
                                 <Row style={{paddingTop:15}}>
-                                    <Chart
-                                        style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
-                                        data={data2}
-                                        type="pie"
-                                        showAxis={false}
-                                    />
+                                    <Col alignItems="center">
+                                        <Row>
+                                            <Title>
+                                                <Text>Sexos</Text>
+                                            </Title>
+                                        </Row>
+                                        <Row alignItems="center" style={{paddingTop:15}}>
+                                            <Chart
+                                                style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
+                                                data={data2}
+                                                type="pie"
+                                                showAxis={false}
+                                            />
+                                        </Row>
+                                    </Col>
                                 </Row>
                                 <Row style={{paddingTop:15}}>
-                                    <Chart
-                                        style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
-                                        data={data2}
-                                        type="pie"
-                                        showAxis={false}
-                                    />
+                                    <Col alignItems="center">
+                                        <Row>
+                                            <Title>
+                                                <Text>Edades</Text>
+                                            </Title>
+                                        </Row>
+                                        <Row alignItems="center" style={{paddingTop:15}}>
+                                            <Chart
+                                                style={{width:150, height: 150, alignItems:'center', justifyContent:'center'}}
+                                                data={data3}
+                                                type="pie"
+                                                showAxis={false}
+                                            />
+                                        </Row>
+                                    </Col>
                                 </Row>
                             </Col>
                         </Grid>
