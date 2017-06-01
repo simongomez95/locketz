@@ -15,7 +15,9 @@ class CreatorHome extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            base64:'',
+        }
     }
 
     closeDrawer = () => {
@@ -26,26 +28,55 @@ class CreatorHome extends Component {
     };
 
     componentWillMount() {
-        this.auth = new Auth()
+        this.auth = new Auth();
+
     };
 
-    // async obtenerProfPic() {
-    //     RNFetchBlob.fetch('GET', '', {
-    //         Authorization : this.auth.getToken(),
+    componentDidMount(){
+        this.auth.getToken().then((token) => {
+            RNFetchBlob.fetch('GET', 'http://34.205.177.234/user/downloadAvatar', {
+                Authorization : 'Bearer ' + token
+            })
+
+                .then((res) => {
+                    let base64Str = res.base64();
+                    this.setState({base64:'data:'+'image/png'+';base64,'+base64Str});
+                    console.log(this.state.base64);
+                })
+
+                .catch((errorMessage,statusCode) => {
+                    console.log("Error: " + errorMessage + "Codigo: " + statusCode);
+
+                })
+        })
+    };
+
+    // obtenerProfPic() {
+    //     this.auth.getToken().then((token) => {
+    //         RNFetchBlob.fetch('GET', 'http://34.205.177.234/user/downloadAvatar', {
+    //             Authorization : 'Bearer ' + token
+    //         })
+    //
+    //             .then((res) => {
+    //                 let base64Str = res.base64();
+    //                 this.setState({base64:'data:'+'image/png'+';base64,'+base64Str});
+    //                 console.log(this.state.base64);
+    //                 return <Image
+    //                     style={{width: 256, height: 256, resizeMode: Image.resizeMode.contain}}
+    //                     source={{uri: this.state.base64}}
+    //
+    //                 />
+    //             })
+    //
+    //             .catch((errorMessage,statusCode) => {
+    //                 console.log("Error: " + errorMessage + "Codigo: " + statusCode);
+    //
+    //             })
     //     })
     //
-    //         .then((res) => {
-    //             let base64Str = res.data;
-    //             var imageBase64 =  'data:'+mimetype_attachment+';base64,'+base64Str;
     //
-    //         })
     //
-    //         .catch((errorMessage,statusCode) => {
-    //             console.log("Error: " + errorMessage + "Codigo: " + statusCode);
-    //
-    //         })
-    //
-    // }
+    // };
 
     render() {
 
@@ -81,8 +112,9 @@ class CreatorHome extends Component {
                             <Row style={{height:300}}>
                                 <Col alignItems ="center">
                                     <Image
-                                        style={{width: 256, height: 256}}
-                                        source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                                        style={{width: 256, height: 256, resizeMode: Image.resizeMode.contain}}
+                                        source={{uri: this.state.base64}}
+
                                     />
                                 </Col>
                             </Row>
