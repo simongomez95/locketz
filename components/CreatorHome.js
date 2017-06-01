@@ -5,6 +5,8 @@ import { Image, View } from 'react-native';
 import Drawer from 'react-native-drawer';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import SideBar from './CreatorSideBar';
+import RNFetchBlob from 'react-native-fetch-blob';
+import Auth from '../utils/Auth';
 
 class CreatorHome extends Component {
 
@@ -22,6 +24,28 @@ class CreatorHome extends Component {
     openDrawer = () => {
         this._drawer.open()
     };
+
+    componentWillMount() {
+        this.auth = new Auth()
+    };
+
+    // async obtenerProfPic() {
+    //     RNFetchBlob.fetch('GET', '', {
+    //         Authorization : this.auth.getToken(),
+    //     })
+    //
+    //         .then((res) => {
+    //             let base64Str = res.data;
+    //             var imageBase64 =  'data:'+mimetype_attachment+';base64,'+base64Str;
+    //
+    //         })
+    //
+    //         .catch((errorMessage,statusCode) => {
+    //             console.log("Error: " + errorMessage + "Codigo: " + statusCode);
+    //
+    //         })
+    //
+    // }
 
     render() {
 
@@ -58,7 +82,7 @@ class CreatorHome extends Component {
                                 <Col alignItems ="center">
                                     <Image
                                         style={{width: 256, height: 256}}
-                                        source={require('../img/pool1.png')}
+                                        source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
                                     />
                                 </Col>
                             </Row>
