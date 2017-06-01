@@ -7,6 +7,7 @@ import {Text, Card, CardItem, Thumbnail, Body} from 'native-base';
 import Subscription from '../utils/Subscription';
 import FollowButton from './FollowButton';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import SearchCard from "./SearchCard";
 class SearchResults extends Component {
 
   static propTypes = {};
@@ -15,40 +16,43 @@ class SearchResults extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: {}
-    };
+      results: false
+    }
+    ;
+
+
 
     this.subscription = new Subscription()
   }
 
-  render() {
-    return (
-      <Grid>
-        <Row>
-          <Card>
-            <Row>
-              <Col size={3}>
-                <CardItem header>
-                  <Thumbnail size={80} source={require('../img/pool2.jpg')} />
-                  <Text style={{paddingLeft:15}}>Deadpool</Text>
-                </CardItem>
-              </Col>
-              <Col size={1} style={{justifyContent: "center"}}>
-                <FollowButton userId={"elUsuario"}/>
-              </Col>
-            </Row>
-            <CardItem>
-              <Body>
-              <Text note>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin sapien sit amet neque vulputate ultrices.
-              </Text>
-              </Body>
-            </CardItem>
-          </Card>
-        </Row>
-      </Grid>
-    )
+  renderItems() {
+    let hum = this.subscription.searchUser("c");
+    this.setState({
+      results: hum
+    });
 
+
+    return this.state.results.map((item, index) => {
+      if (typeof this.state.results[index] !== 'object') {
+        return <Text>AAAAAAA</Text>;
+      }
+      else {
+        return <SearchCard
+          username={this.state.results[index].username}
+          userId={this.state.results[index].id}
+        />
+      }
+
+    })
+
+  }
+
+  render () {
+    return (
+      <Col className='App'>
+        {this.renderItems()}
+      </Col>
+    );
   }
 
 }

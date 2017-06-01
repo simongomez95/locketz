@@ -50,11 +50,10 @@ class Subscription {
   searchUser (searchName) {
     const url = 'http://34.205.177.234/consumer/searchUsers';
     this.auth.getToken().then((token) => {
-      if (!query) {
+      if (!searchName) {
         return false;
       } else {
-
-        fetch(url, {
+        return fetch(url, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
