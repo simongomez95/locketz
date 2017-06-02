@@ -9,7 +9,8 @@ import RNFetchBlob from 'react-native-fetch-blob'
 
 class Content {
 
-  token = Auth.getToken();
+  auth = new Auth();
+  subscription = new Subscription();
   /**
    uploadPhoto (photo) {
     const url = config.siteUrl + '/creator/uploadPhoto';
@@ -50,19 +51,41 @@ class Content {
       })
   }
 
-  getPhotos() {
+  getPhotos(followedUser, callback) {
     const url = config.siteUrl + '/consumer/getPhotos';
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.token
-      }
-    }).then((response) => response.json())
-      .catch((error) => {
-        console.error(error);
+    this.auth.getToken().then((token) => {
+      return fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.token
+        },
+        body: JSON.stringify({
+          followedUser: followedUser
+        })
+      }).then((response) => response.json())
+        .then((res) => {
+            callback(res)
+          })
+        .catch((error) => {
+          console.error(error);
+        });
+    })
+  }
+
+  getUserPhotos(callback) {
+    this.subscription.getFollowing((followedUsers) => {
+      followedUsers.map((item, index) => {
+        if (typeof followedUsers[index] !== 'object') {
+          console.log("Aiura");
+        }
+        else {
+          this.getPhotos(followedUsers[index], callback)
+        }
+
       });
+    })
   }
 
   downloadPhoto(photoId) {
