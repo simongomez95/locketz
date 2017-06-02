@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import {Text, Card, CardItem, Thumbnail, Body} from 'native-base';
+import {Text, Card, CardItem, Thumbnail, Body, Content} from 'native-base';
 import Subscription from '../utils/Subscription';
 import FollowButton from './FollowButton';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -16,42 +16,61 @@ class SearchResults extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: false
-    }
-    ;
+      results: false,
+    };
 
 
 
-    this.subscription = new Subscription()
+    this.subscription = new Subscription();
+
   }
 
-  renderItems() {
-    let hum = this.subscription.searchUser("c");
+  componentWillMount() {
+    this.awebo();
+  }
+
+
+  renderItems(items) {
+
+    try {
+
+      return items.map((item, index) => {
+        console.log("PENEEEEE " + JSON.stringify(item));
+        console.log("PENEEEEESOTEEE " + index);
+        if (typeof items[index] !== 'object') {
+          return <Text>AAAAAAA</Text>;
+        }
+        else {
+          console.log(items.length);
+          return <SearchCard
+            username={items[index].username}
+            userId={items[index].id}
+          />
+        }
+
+      })
+    } catch(err) {
+      console.log(err);
+    }
+
+  }
+  setItems(items) {
     this.setState({
-      results: hum
-    });
-
-
-    return this.state.results.map((item, index) => {
-      if (typeof this.state.results[index] !== 'object') {
-        return <Text>AAAAAAA</Text>;
-      }
-      else {
-        return <SearchCard
-          username={this.state.results[index].username}
-          userId={this.state.results[index].id}
-        />
-      }
-
+      results: items
     })
+  }
 
+  awebo() {
+    this.subscription.searchUser("c", this.setItems.bind(this));
   }
 
   render () {
+
     return (
-      <Col className='App'>
-        {this.renderItems()}
-      </Col>
+    <Content>
+      {this.renderItems(this.state.results)}
+    </Content>
+
     );
   }
 

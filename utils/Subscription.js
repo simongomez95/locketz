@@ -47,13 +47,13 @@ class Subscription {
 
   }
 
-  searchUser (searchName) {
+  searchUser (searchName, renderFunction) {
     const url = 'http://34.205.177.234/consumer/searchUsers';
     this.auth.getToken().then((token) => {
       if (!searchName) {
         return false;
       } else {
-        return fetch(url, {
+        fetch(url, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -70,6 +70,8 @@ class Subscription {
           } else {
             return res.json();
           }
+        }).then((results) => {
+          renderFunction(results);
         })
           .catch((error) => {
             console.error(error);

@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input, Item, Button, Text
-  } from 'native-base';
+} from 'native-base';
 import { Image } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Drawer from 'react-native-drawer';
@@ -67,20 +67,19 @@ class Search extends Component {
             <Title style={{color:'#FFFFFF'}}>Search</Title>
             </Body>
           </Header>
-          <Content>
-            <Header searchBar rounded style={{backgroundColor:"#7B1FA2"}}>
-              <Item>
-                <Icon name="ios-people" />
-                <Input placeholder="People" />
-                <Icon name="ios-search" />
-              </Item>
-              <Button transparent onPress={() => {this.setState({searched: true})}}>
-                <Text>Search</Text>
-              </Button>
-            </Header>
-            {this.showResults()}
-          </Content>
+          <Header searchBar rounded style={{backgroundColor:"#7B1FA2"}}>
+            <Item>
+              <Icon name="ios-people" />
+              <Input placeholder="People" />
+              <Icon name="ios-search" />
+            </Item>
+            <Button transparent onPress={() => {this.setState({searched: true})}}>
+              <Text>Search</Text>
+            </Button>
+          </Header>
+          {this.showResults()}
         </Drawer>
+
       </Container>
     )
   }
