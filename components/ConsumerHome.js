@@ -7,7 +7,7 @@ import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input
         ListItem, Thumbnail, Card, CardItem} from 'native-base';
 import { Image } from 'react-native'
 import Drawer from 'react-native-drawer';
-import SideBar from './CreatorSideBar';
+import SideBar from './ConsumerSideBar';
 
 class ConsumerHome extends Component {
 

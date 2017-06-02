@@ -5,6 +5,8 @@ import { Image, View } from 'react-native';
 import Drawer from 'react-native-drawer';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import SideBar from './CreatorSideBar';
+import RNFetchBlob from 'react-native-fetch-blob';
+import Auth from '../utils/Auth';
 
 class CreatorHome extends Component {
 
@@ -13,7 +15,9 @@ class CreatorHome extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            base64:'',
+        }
     }
 
     closeDrawer = () => {
@@ -22,6 +26,57 @@ class CreatorHome extends Component {
     openDrawer = () => {
         this._drawer.open()
     };
+
+    componentWillMount() {
+        this.auth = new Auth();
+
+    };
+
+    componentDidMount(){
+        this.auth.getToken().then((token) => {
+            RNFetchBlob.fetch('GET', 'http://34.205.177.234/user/downloadAvatar', {
+                Authorization : 'Bearer ' + token
+            })
+
+                .then((res) => {
+                    let base64Str = res.base64();
+                    this.setState({base64:'data:'+'image/png'+';base64,'+base64Str});
+                    console.log(this.state.base64);
+                })
+
+                .catch((errorMessage,statusCode) => {
+                    console.log("Error: " + errorMessage + "Codigo: " + statusCode);
+
+                })
+        })
+    };
+
+    // obtenerProfPic() {
+    //     this.auth.getToken().then((token) => {
+    //         RNFetchBlob.fetch('GET', 'http://34.205.177.234/user/downloadAvatar', {
+    //             Authorization : 'Bearer ' + token
+    //         })
+    //
+    //             .then((res) => {
+    //                 let base64Str = res.base64();
+    //                 this.setState({base64:'data:'+'image/png'+';base64,'+base64Str});
+    //                 console.log(this.state.base64);
+    //                 return <Image
+    //                     style={{width: 256, height: 256, resizeMode: Image.resizeMode.contain}}
+    //                     source={{uri: this.state.base64}}
+    //
+    //                 />
+    //             })
+    //
+    //             .catch((errorMessage,statusCode) => {
+    //                 console.log("Error: " + errorMessage + "Codigo: " + statusCode);
+    //
+    //             })
+    //     })
+    //
+    //
+    //
+    // };
 
     render() {
 
@@ -57,8 +112,9 @@ class CreatorHome extends Component {
                             <Row style={{height:300}}>
                                 <Col alignItems ="center">
                                     <Image
-                                        style={{width: 256, height: 256}}
-                                        source={require('../img/pool1.png')}
+                                        style={{width: 256, height: 256, resizeMode: Image.resizeMode.contain}}
+                                        source={{uri: this.state.base64}}
+
                                     />
                                 </Col>
                             </Row>

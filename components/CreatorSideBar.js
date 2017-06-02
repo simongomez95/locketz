@@ -23,7 +23,7 @@ class CreatorSideBar extends Component {
     render(){
         return(
             <Container style={{backgroundColor:"#BDBDBD"}}>
-                <Header style={{backgroundColor:"#9C27B0", height:80}}>
+                <Header style={{backgroundColor:"#9C27B0", height:50}}>
                     <Body alignItems="flex-end">
                     <Title style={{color:'#FFFFFF'}}>Locketz</Title>
                     </Body>
@@ -49,27 +49,12 @@ class CreatorSideBar extends Component {
                             <Button transparent block style={{height:30,width:140}}
                                     onPress={
                                  () => {
-                                    this.props.navigator.push({id: 'Settings'})
+                                    this.props.navigator.push({id: 'Upload'})
                                  }
                                 }
                             >
                                 <Left>
                                     <Text>Upload</Text>
-                                </Left>
-
-                            </Button>
-                        </ListItem>
-
-                        <ListItem>
-                            <Button transparent block style={{height:30,width:140}}
-                                    onPress={
-                                        () => {
-                                            this.props.navigator.push({id: 'Search'})
-                                        }
-                                    }
-                            >
-                                <Left>
-                                    <Text>Search</Text>
                                 </Left>
 
                             </Button>

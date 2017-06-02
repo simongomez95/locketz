@@ -7,7 +7,7 @@ import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input
 import { Image } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Drawer from 'react-native-drawer';
-import SideBar from './CreatorSideBar';
+import SideBar from './ConsumerSideBar';
 import SearchResults from "./SearchResults";
 
 class Search extends Component {

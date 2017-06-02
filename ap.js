@@ -18,10 +18,13 @@ import Login from './components/Login';
 import CreatorHome from './components/CreatorHome';
 import ConsumerHome from './components/ConsumerHome'
 import Register from "./components/Register";
-import SideBar from './components/CreatorSideBar';
+import SideBarCre from './components/CreatorSideBar';
 import Settings from './components/Settings';
 import AnalyticsBase from './components/AnalyticsBase';
 import Search from './components/Search';
+import SideBarCon from './components/ConsumerSideBar';
+import SettingsB from './components/SettingsB';
+import Upload from './components/Upload';
 
 export default class locketz extends Component {
   constructor(props) {
@@ -50,8 +53,8 @@ export default class locketz extends Component {
     if(route.id == 'ConsumerHome'){
       return <ConsumerHome navigator={navigator}/>
     }
-    if(route.id == 'SideBar'){
-        return <SideBar navigator={navigator}/>
+    if(route.id == 'SideBarCre'){
+        return <SideBarCre navigator={navigator}/>
     }
     if(route.id == 'Settings'){
         return <Settings navigator={navigator}/>
@@ -59,8 +62,17 @@ export default class locketz extends Component {
     if(route.id == 'AnalyticsBase'){
         return <AnalyticsBase navigator={navigator}/>
     }
+    if (route.id == 'SideBarCon') {
+        return <SideBarCon navigator={navigator}/>
+    }
     if (route.id == 'Search') {
         return <Search navigator={navigator}/>
+    }
+    if(route.id == 'SettingsB') {
+        return <SettingsB navigator={navigator} />
+    }
+    if(route.id == 'Upload') {
+        return <Upload navigator={navigator} />
     }
   }
 
