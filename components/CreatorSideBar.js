@@ -49,7 +49,7 @@ class CreatorSideBar extends Component {
                             <Button transparent block style={{height:30,width:140}}
                                     onPress={
                                  () => {
-                                    this.props.navigator.push({id: 'Settings'})
+                                    this.props.navigator.push({id: 'Upload'})
                                  }
                                 }
                             >

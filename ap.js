@@ -24,6 +24,7 @@ import AnalyticsBase from './components/AnalyticsBase';
 import Search from './components/Search';
 import SideBarCon from './components/ConsumerSideBar';
 import SettingsB from './components/SettingsB';
+import Upload from './components/Upload';
 
 export default class locketz extends Component {
   constructor(props) {
@@ -69,6 +70,9 @@ export default class locketz extends Component {
     }
     if(route.id == 'SettingsB') {
         return <SettingsB navigator={navigator} />
+    }
+    if(route.id == 'Upload') {
+        return <Upload navigator={navigator} />
     }
   }
 
