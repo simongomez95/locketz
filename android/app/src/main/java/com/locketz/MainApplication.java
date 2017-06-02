@@ -15,8 +15,8 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-    private static final int PAY_PAL_REQUEST_ID = 9; // <-- Can be any unique number
-    private PayPalPackage payPalPackage; // <--
+    public static final int PAY_PAL_REQUEST_ID = 9; // <-- Can be any unique number
+    public PayPalPackage payPalPackage; // <--
 
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override

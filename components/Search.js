@@ -73,9 +73,11 @@ class Search extends Component {
               <Input placeholder="People" />
               <Icon name="ios-search" />
             </Item>
-            <Button transparent onPress={() => {this.setState({searched: true})}}>
-              <Text>Search</Text>
-            </Button>
+            <Right>
+              <Button transparent onPress={() => {this.setState({searched: true})}}>
+                <Text>Search</Text>
+              </Button>
+            </Right>
           </Header>
           {this.showResults()}
         </Drawer>

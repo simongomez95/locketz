@@ -21,7 +21,7 @@ class Subscription {
     let PayPal = require('react-native-paypal');
     PayPal.paymentRequest({
       clientId: 'AdM4jDxuG598P-Ew3DRemdT2ovQ7Txp2XfYnENatae9gTHF1kU63Ww6U2lKFBJ9KmEc54Wwm3wZlGnCY',
-      environment: PayPalAndroid.SANDBOX,
+      environment: PayPal.SANDBOX,
       price: '42.00',
       currency: 'USD',
       description: 'PayPal Test'

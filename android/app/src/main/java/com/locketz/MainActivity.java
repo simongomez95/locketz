@@ -1,6 +1,8 @@
 package com.locketz;
 
 import com.facebook.react.ReactActivity;
+import android.content.Intent;
+
 public class MainActivity extends ReactActivity {
 
     /**
@@ -19,7 +21,6 @@ public class MainActivity extends ReactActivity {
         if (requestCode == MainApplication.PAY_PAL_REQUEST_ID) { // <--
             ((MainApplication) getApplication()).payPalPackage.handleActivityResult(requestCode, resultCode, data); // <--
         } else {
-            otherModulesHandlers(requestCode, resultCode, data);
         }
     }
 }
