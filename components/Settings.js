@@ -50,13 +50,13 @@ class Settings extends Component {
                         <Left>
                             <Button transparent
                                     onPress={() => {this.openDrawer()}}>
-                                <Icon name="cog" style={{fontSize:25,color:'#FFFFFF'}}/>
+                                <Icon name="menu"  style={{color:'#ffffff'}} />
                             </Button>
-
                         </Left>
-                        <Body alignItems="flex-end">
-                        <Title style={{color:'#FFFFFF'}}>Settings</Title>
+                        <Body alignItems = "center">
+                            <Title style={{color:'#ffffff'}}>Settings</Title>
                         </Body>
+                        <Right/>
                     </Header>
                     <Content>
                         <ListItem icon>

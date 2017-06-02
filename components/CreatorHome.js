@@ -46,7 +46,9 @@ class CreatorHome extends Component {
                                 <Icon name="menu"  style={{color:'#ffffff'}} />
                             </Button>
                         </Left>
-                        <Body alignItems = "center"><Title style={{color:'#ffffff'}}>Home</Title></Body>
+                        <Body alignItems = "center">
+                            <Title style={{color:'#ffffff'}}>Home</Title>
+                        </Body>
                         <Right/>
                     </Header>
 

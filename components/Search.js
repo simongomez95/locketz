@@ -79,7 +79,6 @@ class Search extends Component {
           </Header>
           {this.showResults()}
         </Drawer>
-
       </Container>
     )
   }
