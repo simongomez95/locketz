@@ -35,13 +35,10 @@ class SearchResults extends Component {
     try {
 
       return items.map((item, index) => {
-        console.log("PENEEEEE " + JSON.stringify(item));
-        console.log("PENEEEEESOTEEE " + index);
         if (typeof items[index] !== 'object') {
           return <Text>AAAAAAA</Text>;
         }
         else {
-          console.log(items.length);
           return <SearchCard
             username={items[index].username}
             userId={items[index].id}
@@ -61,7 +58,7 @@ class SearchResults extends Component {
   }
 
   awebo() {
-    this.subscription.searchUser("c", this.setItems.bind(this));
+    this.subscription.searchUser("carla", this.setItems.bind(this));
   }
 
   render () {

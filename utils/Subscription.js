@@ -81,6 +81,30 @@ class Subscription {
 
   }
 
+  isFollowed(id, callback) {
+    this.getFollowing((res) => {
+      try {
+        let idArray = [];
+        res.following.map((item, index) => {
+          if (typeof res.following[index] !== 'object') {
+            console.log("Aiura");
+          }
+          else {
+            idArray.push(res.following[index].id);
+          }
+
+        });
+        //console.log("idArray" + JSON.stringify(idArray));
+        if(idArray.includes(id)) {
+
+          callback();
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
   getFollowers () {
     const url = this.config.siteUrl + '/creator/getFollowers';
     return fetch(url, {
@@ -96,19 +120,29 @@ class Subscription {
       });
   }
 
-  getFollowing () {
-    const url = this.config.siteUrl + '/consumer/getFollowing';
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.token
-      }
-    }).then((response) => response.json())
-      .catch((error) => {
-        console.error(error);
-      });
+  async getFollowing (callback) {
+    const url = 'http://34.205.177.234/consumer/getFollowing';
+    this.auth.getToken().then((token) => {
+      return fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        }
+      }).then((res) => {
+        if (res.err) {
+          return res.err;
+        } else {
+          return res.json();
+        }
+      }).then((results) => {
+        callback(results);
+      })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
   }
 }
 

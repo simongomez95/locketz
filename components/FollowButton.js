@@ -25,6 +25,10 @@ class FollowButton extends Component {
     this.subscription = new Subscription()
   }
 
+  componentDidMount() {
+    this.subscription.isFollowed(this.props.userId, this.setSeguido.bind(this));
+  }
+
   setSeguido() {
     this.setState({
       seguido: true
