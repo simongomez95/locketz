@@ -3,78 +3,85 @@
  */
 import React, { Component } from 'react';
 import { Container, Content, Body, Left, Right, Title, Header, Icon, Form, Input, Item, Button, Text
-    , List, ListItem} from 'native-base';
+} from 'native-base';
 import { Image } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Drawer from 'react-native-drawer';
 import SideBar from './CreatorSideBar';
+import SearchResults from "./SearchResults";
 
 class Search extends Component {
 
-    static propTypes = {};
-    static defaultProps = {};
+  static propTypes = {};
+  static defaultProps = {};
 
-    constructor(props) {
-        super(props);
-        this.state = {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      searched: false
     }
+  }
 
-    _navigate(){
-        this.props.navigator.push({
-            name: 'Search', // Matches route.name
-        })
+  _navigate(){
+    this.props.navigator.push({
+      name: 'Search', // Matches route.name
+    })
+  }
+
+  closeDrawer = () => {
+    this._drawer.close()
+  };
+  openDrawer = () => {
+    this._drawer.open()
+  };
+
+  showResults() {
+    if (this.state.searched) {
+      return <SearchResults/>
     }
+  }
 
-    closeDrawer = () => {
-        this._drawer.close()
-    };
-    openDrawer = () => {
-        this._drawer.open()
-    };
+  render(){
+    return(
+      <Container>
+        <Drawer
+          type="overlay"
+          ref={(ref) => this._drawer = ref}
+          content={<SideBar navigator={this.props.navigator}/>}
+          tapToClose={true}
+          openDrawerOffset={0.58} // 60% gap on the right side of drawer
+          panCloseMask={0.2}
+          closedDrawerOffset={-3}
+          tweenHandler={(ratio) => ({
+            main: { opacity:(2-ratio)/2 }
+          })}>
 
-    render(){
-        return(
-            <Container>
-                <Drawer
-                    type="overlay"
-                    ref={(ref) => this._drawer = ref}
-                    content={<SideBar navigator={this.props.navigator}/>}
-                    tapToClose={true}
-                    openDrawerOffset={0.58} // 60% gap on the right side of drawer
-                    panCloseMask={0.2}
-                    closedDrawerOffset={-3}
-                    tweenHandler={(ratio) => ({
-                        main: { opacity:(2-ratio)/2 }
-                    })}>
-
-                    <Header style={{backgroundColor:"#9C27B0"}}>
-                        <Left>
-                            <Button transparent
-                                    onPress={() => {this.openDrawer()}}>
-                                <Icon name="menu"  style={{color:'#ffffff'}} />
-                            </Button>
-                        </Left>
-                        <Body alignItems = "center">
-                            <Title style={{color:'#ffffff'}}>Search</Title>
-                        </Body>
-                        <Right/>
-                    </Header>
-                    <Content>
-                        <Header searchBar rounded style={{backgroundColor:"#7B1FA2"}}>
-                            <Item>
-                                <Icon name="ios-people" />
-                                <Input placeholder="People" />
-                                <Icon name="ios-search" />
-                            </Item>
-                            <Button transparent>
-                                <Text>Search</Text>
-                            </Button>
-                        </Header>
-                    </Content>
-                </Drawer>
-            </Container>
-        )
-    }
+          <Header style={{backgroundColor:"#9C27B0"}}>
+            <Left>
+              <Button transparent
+                      onPress={() => {this.openDrawer()}}>
+                <Icon name="menu"  style={{color:'#FFFFFF'}} />
+              </Button>
+            </Left>
+            <Body alignItems="flex-end">
+            <Title style={{color:'#FFFFFF'}}>Search</Title>
+            </Body>
+          </Header>
+          <Header searchBar rounded style={{backgroundColor:"#7B1FA2"}}>
+            <Item>
+              <Icon name="ios-people" />
+              <Input placeholder="People" />
+              <Icon name="ios-search" />
+            </Item>
+            <Button transparent onPress={() => {this.setState({searched: true})}}>
+              <Text>Search</Text>
+            </Button>
+          </Header>
+          {this.showResults()}
+        </Drawer>
+      </Container>
+    )
+  }
 
 }
 
