@@ -19,7 +19,10 @@ class Register extends Component {
       username: '',
       password: '',
       confirmPassword: '',
+        naci:'',
+        sex:'',
       userType: false
+
     }
   }
 
@@ -82,6 +85,22 @@ class Register extends Component {
                       onChange={(event) => {
                         this.setState({confirmPassword: event.nativeEvent.text
                         })}}
+                    />
+                  </Item>
+                  <Item>
+                    <Input
+                        placeholder="Año de Nacimiento"
+                        onChange={(event) => {
+                            this.setState({naci: event.nativeEvent.text
+                            })}}
+                    />
+                  </Item>
+                  <Item>
+                    <Input
+                        placeholder="Sexo: M/F/NA"
+                        onChange={(event) => {
+                            this.setState({sex: event.nativeEvent.text
+                            })}}
                     />
                   </Item>
                   <Item>

@@ -1,5 +1,6 @@
 import React, { Component, } from 'react';
 import { Container, Content, Body, Title, Header, Icon, Form, Input, Item, Button, Text } from 'native-base';
+import { Image } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import Auth from '../utils/Auth';
 import style from '../styles/style';
@@ -54,7 +55,11 @@ class Login extends Component {
           <Grid>
             <Row size={10}>
               <Col alignItems="center">
-                <Icon name='cash' style={{fontSize: 56}}></Icon>
+                <Image
+                    style={{width: 200, height: 50, resizeMode: Image.resizeMode.contain, paddingTop:30}}
+                    source={require('../img/logo1.png')}
+
+                />
               </Col>
             </Row>
             <Row size={70} style={{paddingTop: 50}}>
