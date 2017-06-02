@@ -18,6 +18,15 @@ class Subscription {
 
   follow (followUser, switchSeguido) {
     const url = 'http://34.205.177.234/consumer/follow';
+    let PayPal = require('react-native-paypal');
+    PayPal.paymentRequest({
+      clientId: 'AdM4jDxuG598P-Ew3DRemdT2ovQ7Txp2XfYnENatae9gTHF1kU63Ww6U2lKFBJ9KmEc54Wwm3wZlGnCY',
+      environment: PayPalAndroid.SANDBOX,
+      price: '42.00',
+      currency: 'USD',
+      description: 'PayPal Test'
+    }).then((confirm, payment) => console.log('Paid') /* At this point you should verify payment independently */)
+      .catch((error_code) => console.error('Failed to pay through PayPal'));
     this.auth.getToken().then((token) => {
       if (!followUser) {
         return false;
@@ -65,12 +74,12 @@ class Subscription {
           })
         })
           .then((res) => {
-          if (res.err) {
-            return res.err;
-          } else {
-            return res.json();
-          }
-        }).then((results) => {
+            if (res.err) {
+              return res.err;
+            } else {
+              return res.json();
+            }
+          }).then((results) => {
           renderFunction(results);
         })
           .catch((error) => {
