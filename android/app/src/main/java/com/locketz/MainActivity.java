@@ -1,10 +1,6 @@
 package com.locketz;
 
 import com.facebook.react.ReactActivity;
-import br.com.vizir.rn.paypal.PayPalPackage; // <--
-import br.com.vizir.rn.paypal.PayPal; // <--
-import android.content.Intent; // <--
-import android.content.Intent; // <--
 public class MainActivity extends ReactActivity {
 
     /**
