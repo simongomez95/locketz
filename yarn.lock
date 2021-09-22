@@ -4194,6 +4194,10 @@ react-devtools-core@^2.0.8:
     cross-env "^3.1.4"
     ws "^2.0.3"
 
+react-native-camera@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.6.0.tgz#dd2760b7857d660761c78f2da575b494fdc8dcb5"
+
 react-native-chart@^1.0.8-beta:
   version "1.0.8-beta"
   resolved "https://registry.yarnpkg.com/react-native-chart/-/react-native-chart-1.0.8-beta.tgz#c34b50ffe7f2acd6f519d614a134a7cd29135766"
@@ -5139,8 +5143,8 @@ tmp@^0.0.29:
     os-tmpdir "~1.0.1"
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
 
 to-absolute-glob@^0.1.1:
   version "0.1.1"
